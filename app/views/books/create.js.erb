@@ -1,0 +1,13 @@
+$('#books').html("<%= escape_javascript(render partial: 'books', locals: { type: 'delete', page_type: '' }) %>");
+$("#new_book").html("<%= escape_javascript(render :partial => "form") %>");
+$('#book_title').val('');
+$('#book_author').val('');
+$("a[href*='/books?page']")
+        .each(function()
+        {
+            this.href = this.href.replace(/\/books/,
+                    "/admin");
+        });
+
+
+

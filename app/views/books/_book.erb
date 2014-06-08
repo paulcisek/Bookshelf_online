@@ -1,0 +1,19 @@
+    <tr id="bookID_<%=book.id%>">
+      <th><%= book.title %></th>
+      <th><%= book.author%></th>
+      <th>
+        <% if !book.photo_data.nil? %>
+            <%= image_tag show_image_book_url(book), class: "thumbnail"%>
+        <% end %>
+      </th>
+      <th>
+        <% if type == 'delete' %>
+            <%= link_to 'Delete', book_path(book), method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+        <% elsif type == 'add' %>
+            <%= link_to 'Add To Collection', add_to_collection_book_url(book, user_id: @user.id), method: :post, remote: true  %>
+        <% elsif type == 'remove' %>
+            <%= link_to 'Remove From Collection', remove_from_collection_book_url(book, user_id: @user.id), method: :post, remote: true  %>
+        <% else %>
+        <% end %>
+      </th>
+    </tr>

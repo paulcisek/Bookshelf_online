@@ -1,0 +1,32 @@
+<table class="table table-bordered table-striped">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Cover Picture</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <% if type == 'add' %>
+    <tbody id="bookshelf-content">
+    <% @books.each do |book| %>
+        <%= render partial: book, locals: { type: 'add', user_id: params[:id]}%>
+    <% end %>
+  <% elsif type == 'remove' %>
+      <tbody id="bookshelf-owned">
+      <% @user.books.each do |book| %>
+          <%= render partial: book, locals: { type: 'remove', user_id: params[:id]}%>
+      <% end %>
+  <% else %>
+      <tbody id="bookshelf-content">
+      <% @books.each do |book| %>
+          <%= render partial: book, locals: { type: 'delete'} %>
+      <% end %>
+      </tbody>
+  <% end %>
+  </tbody>
+</table>
+<% if type != 'remove' %>
+    <%= will_paginate @books %>
+<% end %>
+

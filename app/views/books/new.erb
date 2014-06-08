@@ -1,0 +1,20 @@
+<div class="row top-buffer">
+    <div class="col-md-8 col-md-offset-3">
+        <div class="col-md-4">
+            <h4>Books</h4>
+            <div id="books">
+              <%= render partial: 'books', locals: { type: 'delete', page_type: '' } %>
+            </div>
+          <% if params[:user_id] %>
+              <div><%= link_to "Books Page", bookshelf_path(id: params[:user_id]) %></div>
+          <% else %>
+              <div><%= link_to "Books Page", bookshelf_path(id: 1) %></div>
+          <% end %>
+
+        </div>
+        <div class="col-md-4">
+            <h4>Add Book</h4>
+            <%= render partial: 'form' %>
+        </div>
+    </div>
+</div>

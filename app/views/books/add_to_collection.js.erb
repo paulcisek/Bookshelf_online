@@ -1,0 +1,3 @@
+if($("#bookshelf-owned > tr#bookID_<%=@book.id%>").length == 0) {
+    $("<%= escape_javascript(render partial: @book, locals: {type: 'remove'}) %>").appendTo("#bookshelf-owned");
+}

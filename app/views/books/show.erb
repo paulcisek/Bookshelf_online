@@ -1,0 +1,15 @@
+<div class="row top-buffer">
+  <div class="col-md-10 col-md-offset-3">
+    <div class="col-md-4" id="books_available">
+      <h3>Books available</h3>
+      <%= render partial: 'books', locals: { type: 'add', page_type: 'bookshelf'} %>
+      <% if @user.admin %>
+        <div><%= link_to "Administration Page", admin_path(user_id: params[:id]) %></div>
+      <% end %>
+    </div>
+    <div class="col-md-4" id="books_owned">
+      <h3>Books Owned</h3>
+      <%= render partial: 'books', locals: { type: 'remove', page_type: 'user'} %>
+    </div>
+  </div>
+</div>
